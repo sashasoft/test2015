@@ -42,6 +42,19 @@ class PostsController < ApplicationController
     
     redirect_to posts_path
   end
+  
+  def form
+    @a 
+  end
+  def sum
+    @b = 0;
+    if params[:arch]
+      @b = 100
+    end
+    
+      @b = @b.to_f + params[:pl].to_f
+    
+  end
  
 private
   def post_params
