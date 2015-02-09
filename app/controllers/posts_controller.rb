@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   def form
     @a 
   end
+  
   def sum
     @b = 0;
     if params[:arch]
@@ -53,6 +54,10 @@ class PostsController < ApplicationController
     end
     
       @b = @b.to_f + params[:pl].to_f
+      
+      @p = Post.last
+      @b = @b.to_f + @p.id.to_f
+      
     
   end
  
