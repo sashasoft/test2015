@@ -14,9 +14,16 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :read, Post %>
+          <td><%= link_to 'Show', post %></td>
+        <% end %>
+        <% if can? :update, Post %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <% end %>
+        <% if can? :destroy, Post %>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+       
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +31,6 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<% if can? :create, Post %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
- get 'posts/form'
+  devise_for :users
+  get 'posts/form'
   get 'posts/sum'
   
   resources :posts
